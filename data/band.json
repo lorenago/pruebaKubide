@@ -1,0 +1,28 @@
+[{	"name": "The Rolling Stones",
+	"url":"/:id",
+	"title": "The Rolling Stones",
+	"description": "1º parrafo wiki",
+	"keywords": "palabras de la descrip anterior",
+	"video": "urlyoutube",
+	"text": "texto de la banda",
+	"image": "./img/cocina.png"
+	},
+	{"name": "The Beatles",
+	"url":"/:id",
+	"title": "The Beatles",
+	"description": "1º parrafo wiki",
+	"keywords": "palabras de la descrip anterior",
+	"video": "urlyoutube",
+	"text": "texto de la banda",
+	"image": "./img/cocina.png"
+	},
+
+	{"name": "Queen",
+	"url":"/:id",
+	"title": "Queen",
+	"description": "1º parrafo wiki",
+	"keywords": "palabras de la descrip anterior",
+	"video": "urlyoutube",
+	"text": "texto de la banda",
+	"image": "./img/cocina.png"
+	}];

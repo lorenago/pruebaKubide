@@ -1,15 +1,20 @@
 <!DOCTYPE html>
-<html lang="es" ng-app="myApp">
+<html ng-app="myApp">
 <head>
 	<base href="/">
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="./stylesheets/style.css">
 	<title>Angular Rocks!</title>
 	<script type="text/javascript" src="./lib/angular.js"></script>
+	<script type="text/javascript" src="./lib/angular-resource.js"></script>
 	<script type="text/javascript" src="./lib/angular-route.js"></script>
 	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script type="text/javascript" src="./scripts/app.js"></script>
+	<script type="text/javascript" src="./scripts/directives.js"></script>
+	<script type="text/javascript" src="./scripts/controllers.js"></script>
 </head>
 <body>
+	<ng-view>Hola!!!! Estoy aqui eh?
+	</ng-view>
 </body>
 </html>
