@@ -1,0 +1,63 @@
+body {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  background-color: grey;
+  display: flex;
+  flex-direction: column; }
+  body header {
+    text-align: center;
+    font-size: 1.8em;
+    font-weight: bold;
+    background-color: black;
+    color: white; }
+  body #container {
+    display: flex;
+    flex: 1; }
+    body #container #menuLat {
+      width: 200px; }
+      body #container #menuLat ul {
+        margin: 0;
+        padding: 0;
+        text-align: center; }
+        body #container #menuLat ul a {
+          text-decoration: none;
+          color: black; }
+          body #container #menuLat ul a li {
+            list-style: none;
+            border: 2px solid grey;
+            border-bottom: 1px solid grey;
+            padding: 15px;
+            background-color: #eee; }
+        body #container #menuLat ul li:first-child {
+          border-top: none; }
+    body #container #mainContain {
+      flex: 1;
+      display: flex;
+      background-color: #eee; }
+  body footer {
+    height: 3%;
+    text-align: center;
+    font-size: 0.8em;
+    padding: 15px;
+    background-color: black;
+    color: white; }
+
+/*Slider */
+#slider {
+  position: relative;
+  display: flex;
+  flex: 1;
+  z-index: 5; }
+
+.carousel-inner .item img, .carousel-inner .item img {
+  width: 100%; }
+
+.carousel-indicators .active {
+  background-color: orange; }
+.carousel-indicators li {
+  border: 1px solid orange; }
+
+/*# sourceMappingURL=style.css.map */

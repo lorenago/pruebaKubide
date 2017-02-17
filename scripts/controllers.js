@@ -1,5 +1,6 @@
 var ENDPOINT = "data/band.json";
 var PAGES = "data/pages.json";
+var SLIDES = "data/slides.json";
 
 var findBand = function (array, id){
   for (var i = 0, m = null; i<array.length; i++){
@@ -8,8 +9,14 @@ var findBand = function (array, id){
     };
   };
 };
+function homeController($scope, $route, $http){
+	$scope.$route = $route;
+	$http.get(SLIDES).then(function(res){
+		$scope.slide = res.data;
+	});
+};
 
-function indexController($scope, $route, $http){
+function menuController($scope, $route, $http){
 	$scope.$route = $route;
 	$http.get(PAGES).then(function(res){
 		$scope.pages = res.data;
@@ -28,6 +35,7 @@ function bandController($scope, $route, $routeParams, $http){
 
 (function() {
 	var ctrl = angular.module('myApp.controllers', []);
-	ctrl.controller('indexController', indexController);
+	ctrl.controller('homeController', homeController);
+	ctrl.controller('menuController', menuController);
 	ctrl.controller('bandController', bandController);
 })();

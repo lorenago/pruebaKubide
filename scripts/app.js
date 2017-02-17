@@ -1,8 +1,8 @@
 function setConfig($locationProvider, $routeProvider){
 	$locationProvider.html5Mode(true);
 	$routeProvider
-	.when('/', {
-	    controller: 'indexController',
+    .when('/', {
+	    controller: 'homeController',
 	    templateUrl: './views/home.html'
   	})
   	.when('/foo', {
@@ -17,20 +17,8 @@ function setConfig($locationProvider, $routeProvider){
     	controller: 'bandController',
     	templateUrl: 'views/band.html',
   	})
-  	/*.when('/the-rolling-stones',{
-    	controller: 'rollingController',
-    	templateUrl: 'views/the-rolling-stones.html',
-  	})
-  	.when('/the-beatles',{
-    	controller: 'beatlesController',
-    	templateUrl: 'views/the-beatles.html',
-  	})
-  	.when('/queen',{
-    	controller: 'queenController',
-    	templateUrl: 'views/queen.html',
-  	})*/
 };
 (function () {
-	var app = angular.module('myApp', ['ngRoute', 'myApp.controllers']);//, 'myApp.directives'
+	var app = angular.module('myApp', ['ngRoute', 'myApp.controllers', 'myApp.directives']);
 	app.config(['$locationProvider', '$routeProvider', setConfig]);
 })();

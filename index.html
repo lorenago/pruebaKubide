@@ -3,18 +3,29 @@
 <head>
 	<base href="/">
 	<meta charset="utf-8">
+	<link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="./stylesheets/style.css">
 	<title>Angular Rocks!</title>
 	<script type="text/javascript" src="./lib/angular.js"></script>
 	<script type="text/javascript" src="./lib/angular-resource.js"></script>
 	<script type="text/javascript" src="./lib/angular-route.js"></script>
 	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="./bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="./scripts/app.js"></script>
 	<script type="text/javascript" src="./scripts/directives.js"></script>
 	<script type="text/javascript" src="./scripts/controllers.js"></script>
 </head>
 <body>
-	<ng-view>Hola!!!! Estoy aqui eh?
-	</ng-view>
+	<header header-directive></header>
+	<div id="container">
+		<div id="menuLat">
+			<menu-directive ng-controller="menuController"></menu-directive>
+		</div>
+		<div id="mainContain">
+			<ng-view></ng-view>
+		</div>
+	
+	</div>
+	<footer footer-directive></footer>
 </body>
 </html>
