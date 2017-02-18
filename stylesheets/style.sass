@@ -4,16 +4,16 @@ body
 	margin: 0
 	padding: 0
 	display: flex
-	background-color: grey
+	background-color: white
 	display: flex
 	flex-direction: column
 
 	header 
 		text-align: center
-		font-size: 1.8em
+		font-size: 2.5em
 		font-weight: bold
-		background-color: black
-		color: white
+		background-color: white
+		color: #df1212
 
 	#container
 		display: flex
@@ -31,10 +31,9 @@ body
 					color: black
 					li 
 						list-style: none
-						border: 2px solid grey
-						border-bottom: 1px solid grey
+						border-top: 2px solid grey
+						border-bottom: 1px solid #dde8dd
 						padding: 15px
-						background-color: #eee
 					
 				li:first-child
 					border-top: none
@@ -46,25 +45,8 @@ body
 
 
 	footer 
-		height: 3%
 		text-align: center
 		font-size: 0.8em
 		padding: 15px
 		background-color: black
 		color: white
-
-/*Slider*/
-#slider
-	position: relative
-	display: flex
-	flex: 1
-	z-index: 5
-.carousel-inner .item img, .carousel-inner .item img
-	width: 100%
-	
-.carousel-indicators 
-	.active
-		background-color: orange
-		
-	li 
-		border: 1px solid orange

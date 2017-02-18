@@ -1,28 +1,42 @@
-[{	"name": "The Rolling Stones",
-	"url":"/:id",
-	"title": "The Rolling Stones",
-	"description": "1º parrafo wiki",
-	"keywords": "palabras de la descrip anterior",
-	"video": "urlyoutube",
-	"text": "texto de la banda",
-	"image": "./img/rolling-stones.jpg"
+[
+	{	
+		"id": 1,
+		"name": "The Rolling Stones",
+		"url":"/:id",
+		"path": "the-rolling-stones",
+		"title": "The Rolling Stones",
+		"wiki": "The_Rolling_Stones",
+		"description": "1º parrafo wiki",
+		"keywords": "palabras de la descrip anterior",
+		"video": "urlyoutube",
+		"text": "texto de la banda",
+		"image": "./img/rolling-stones.jpg"
 	},
-	{"name": "The Beatles",
-	"url":"/:id",
-	"title": "The Beatles",
-	"description": "1º parrafo wiki",
-	"keywords": "palabras de la descrip anterior",
-	"video": "urlyoutube",
-	"text": "texto de la banda",
-	"image": "./img/beatles.jpg"
+	{
+		"id": 2,
+		"name": "The Beatles",
+		"url":"/:id",
+		"path": "the-beatles",
+		"title": "The Beatles",
+		"wiki": "The_Beatles",
+		"description": "1º parrafo wiki",
+		"keywords": "palabras de la descrip anterior",
+		"video": "urlyoutube",
+		"text": "texto de la banda",
+		"image": "./img/beatles.jpg"
 	},
 
-	{"name": "Queen",
-	"url":"/:id",
-	"title": "Queen",
-	"description": "1º parrafo wiki",
-	"keywords": "palabras de la descrip anterior",
-	"video": "urlyoutube",
-	"text": "texto de la banda",
-	"image": "./img/queen.jpg"
-	}];
+	{
+		"id": 3,
+		"name": "Queen",
+		"url":"/:id",
+		"path": "queen",
+		"title": "Queen",
+		"wiki": "Queen",
+		"description": "1º parrafo wiki",
+		"keywords": "palabras de la descrip anterior",
+		"video": "urlyoutube",
+		"text": "texto de la banda",
+		"image": "./img/queen.jpg"
+	}
+]

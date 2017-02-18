@@ -1,16 +1,16 @@
 [{	"id": 1,
 	"title": "The Rolling Stones",
-	"url":"/:id",
+	"url":"/the-rolling-stones",
 	"image": "./img/rolling-stones.jpg"
 	},
 	{"id": 2,
 	"title": "The Beatles",
-	"url":"/:id",
+	"url":"/the-beatles",
 	"image": "./img/beatles.jpg"
 	},
 
 	{"id": 3,
 	"title": "Queen",
-	"url":"/:id",
+	"url":"/queen",
 	"image": "./img/queen.jpg"
 	}];
