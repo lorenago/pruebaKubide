@@ -18,6 +18,8 @@ function setConfig($locationProvider, $routeProvider){
     	templateUrl: 'views/band.html',
   	})
 };
+
+
 (function () {
 	var app = angular.module('myApp', ['ngRoute', 'myApp.controllers', 'myApp.directives']);
 	app.config(['$locationProvider', '$routeProvider', setConfig]);

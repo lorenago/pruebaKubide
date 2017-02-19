@@ -1,8 +1,12 @@
 <div class="bandViewer">
-	<iframe width="554" height="auto" ng-src="{{band.video | trusted}}" frameborder="0" allowfullscreen preload="auto"></iframe>
+	<div>Foto o lo que sea</div>
 	<div class="bandContent">
-		<div class="bandInfo">{{band.text}}</div>
-
+		<div class="bandInfo" ng-click="infoBand(band)">Biografía de la banda</div>
+		<div class="" ng-click="video(band)">Ver vídeo de la banda</div>
 		<img ng-src="{{band.image}}" />
+		
 	</div>
+</div>
+<div id="vid">
+	<iframe width="auto" height="auto" ng-src="{{band.video | trusted}}" frameborder="0" allowfullscreen preload="auto"></iframe>
 </div>

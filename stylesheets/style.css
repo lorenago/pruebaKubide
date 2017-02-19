@@ -41,12 +41,21 @@ body {
         flex: 1; }
       body #container #mainContain .bandViewer {
         flex-direction: column; }
-        body #container #mainContain .bandViewer iframe {
-          margin: auto; }
         body #container #mainContain .bandViewer .bandContent {
           flex-direction: row; }
           body #container #mainContain .bandViewer .bandContent img {
             max-width: 50%; }
+      body #container #mainContain #vid {
+        visibility: hidden;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        display: flex; }
+        body #container #mainContain #vid iframe {
+          margin: auto;
+          width: 100%;
+          height: 100%; }
   body footer {
     text-align: center;
     font-size: 0.8em;
