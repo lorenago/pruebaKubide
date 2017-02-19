@@ -21,4 +21,9 @@ function setConfig($locationProvider, $routeProvider){
 (function () {
 	var app = angular.module('myApp', ['ngRoute', 'myApp.controllers', 'myApp.directives']);
 	app.config(['$locationProvider', '$routeProvider', setConfig]);
+  app.filter('trusted', ['$sce', function ($sce) {
+    return function(url) {
+      return $sce.trustAsResourceUrl(url);
+    };
+  }]);
 })();

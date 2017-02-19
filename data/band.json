@@ -8,9 +8,9 @@
 		"wiki": "The_Rolling_Stones",
 		"description": "1º parrafo wiki",
 		"keywords": "palabras de la descrip anterior",
-		"video": "urlyoutube",
+		"video": "https://www.youtube.com/embed/RcZn2-bGXqQ",
 		"text": "texto de la banda",
-		"image": "./img/rolling-stones.jpg"
+		"image": "./data/img/rolling-stones.jpg"
 	},
 	{
 		"id": 2,
@@ -21,9 +21,9 @@
 		"wiki": "The_Beatles",
 		"description": "1º parrafo wiki",
 		"keywords": "palabras de la descrip anterior",
-		"video": "urlyoutube",
+		"video": "https://www.youtube.com/embed/A_MjCqQoLLA",
 		"text": "texto de la banda",
-		"image": "./img/beatles.jpg"
+		"image": "./data/img/beatles.jpg"
 	},
 
 	{
@@ -35,8 +35,8 @@
 		"wiki": "Queen",
 		"description": "1º parrafo wiki",
 		"keywords": "palabras de la descrip anterior",
-		"video": "urlyoutube",
+		"video": "https://www.youtube.com/embed/f4Mc-NYPHaQ",
 		"text": "texto de la banda",
-		"image": "./img/queen.jpg"
+		"image": "./data/img/queen.jpg"
 	}
 ]

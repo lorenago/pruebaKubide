@@ -24,6 +24,7 @@ function menuController($scope, $route, $http){
 };
 
 function bandController($scope, $route, $routeParams, $http){
+	document.getElementById("spinner").style.visibility = "visible"
 	var bandSelected = "";
 	$scope.$route = $route;
 	$scope.band_Id = $routeParams.id;
@@ -33,10 +34,10 @@ function bandController($scope, $route, $routeParams, $http){
 		return new Promise( function(resolve, reject) {
 			$http.get(BANDS).then(function(id){
 				var band = id.data;
-				$scope.bands = findBand(band, $scope.band_Id);
-				bandSelected = $scope.bands.wiki;
-				if ($scope.bands) {
-					resolve($scope.bands);
+				$scope.band = findBand(band, $scope.band_Id);
+				bandSelected = $scope.band.wiki;
+				if ($scope.band) {
+					resolve($scope.band);
 				} else {
 					var error = 'No se han encontrado resultados';
 					reject(error);
@@ -51,11 +52,17 @@ function bandController($scope, $route, $routeParams, $http){
 		
 		$.ajax({
 			type: "GET",
-			url: "https://es.wikipedia.org/w/api.php?format=json&action=query&prop=revisions&rvprop=content&titles=" + bandSelected,	
-				
+			url: "https://es.wikipedia.org/w/api.php?format=json&action=query&prop=revisions&rvprop=content&rvparse&titles=" + bandSelected,
 			success: function(response){
-				$scope.bands.text = response.query;
-				var pages = response.query.pages;
+				result = response.query.pages;
+				var pages = response.query;
+				for (var i in result) {
+					pageid = i;
+				}
+				var x = pageid;
+				alert('Ahora verías algo');
+				$scope.band.text = response.query.pages[x].revisions[0]["*"];
+				document.getElementById("spinner").style.visibility = "hidden"
 				
 			},
 			error: function(error){

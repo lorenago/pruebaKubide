@@ -1,3 +1,8 @@
-<div>
-	<video src="url.mp4" loop="false" buttons></video>
+<div class="bandViewer">
+	<iframe width="554" height="auto" ng-src="{{band.video | trusted}}" frameborder="0" allowfullscreen preload="auto"></iframe>
+	<div class="bandContent">
+		<div class="bandInfo">{{band.text}}</div>
+
+		<img ng-src="{{band.image}}" />
+	</div>
 </div>
