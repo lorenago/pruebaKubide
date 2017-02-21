@@ -32,45 +32,71 @@ function bandController($scope, $route, $routeParams, $http){
 	$http.get(BANDS).then(function(id){
 		var band = id.data;
 		$scope.band = findBand(band, $scope.band_Id);
-		document.getElementById("spinner").style.visibility = "hidden";
+		infoBand($scope.band);
 	});
 
-	$scope.infoBand = function (band) {
-		document.getElementById("spinner").style.visibility = "visible";
-		band.wiki;		
-		$.ajax({
-			type: "GET",
-			url: "https://es.wikipedia.org/w/api.php?format=json&action=query&prop=revisions&rvprop=content&rvparse&titles=" + band.wiki,
-			success: function(response){
-				result = response.query.pages;
-				var pages = response.query;
-				for (var i in result) {
-					pageid = i;
+	function infoBand(band) {
+		if(band.text==""){
+			document.getElementById("spinner").style.visibility = "visible";
+			band.wiki;		
+			$.ajax({
+				type: "GET",
+				url: "https://es.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&titles=" + band.wiki,
+				
+				success: function(response){
+					result = response.query.pages;
+					var pages = response.query;
+					var text;
+					for (var i in result) {
+						pageid = i;
+					}
+					var x = pageid;		
+					var text = response.query.pages[x].extract;
+					for (var i = 0; i < text.length; i++) {
+						if(text[i]== '<') {
+							if (text[i+1] == '/') {
+								if (text[i+2] == 'p') {
+									j = i+3;
+									text = text.slice(0, j);
+									break;
+								}
+							}
+						}
+					}
+					var el = document.createElement('html');
+					el.innerHTML = text;
+					band.text = el.innerText; 
+					document.getElementById("spinner").style.visibility = "hidden";
+				},
+				error: function(error){
+					console.error('No se han encontrado resultados.', error);
 				}
-				var x = pageid;				
-				document.getElementById("spinner").style.visibility = "hidden";
-				alert(response.query.pages[x].revisions[0]["*"]);
-			},
-			error: function(error){
-				console.error('No se han encontrado resultados.', error);
-			},
-			dataType: "JSON" 
-		});
+			});
+		}
+		else {
+			$scope.band = band;
+			document.getElementById("spinner").style.visibility = "hidden";
+		}
 	}
-	$scope.video = function(band) {
+	$scope.view = function(band, element) {
 		document.getElementById("vid").style.visibility = "visible";
+			$scope.video = false;
+			$scope.image = false;
+			$scope.text = false;
+		switch (element){
+			case "video":
+				$scope.video = !$scope.video;
+			//	document.getElementById("video").style.display = "flex";
+			case "image":
+				$scope.image = !$scope.image;
+				//document.getElementById("image").style.display = "flex";
+			case "text":
+				$scope.text = !$scope.text;
+			//	document.getElementById("text").style.display = "flex";
+		}
+		//document.getElementById(element).style.visibility = "visible";
 	}
 };
-	//Wiki API 
-
-	// http://en.wikipedia.org/w/api.php?format=json&action=query
-	// titles=PáginaA|PáginaB|PáginaC
-
-	//Imagen:
-	// http://es.wikipedia.org/w/api.php?format=json&action=query&titles=Archivo:Gandhi_Nehru_Indira.jpg&prop=imageinfo&iiprop=url|size
-	// respuesta.query.pages[-1].imageinfo[0].url
-
-
 
 
 (function() {
@@ -82,3 +108,26 @@ function bandController($scope, $route, $routeParams, $http){
 	ctrl.controller('bandController', bandController);
 	//	ctrl.controller('indexController', indexController);
 })();
+
+
+
+/*
+
+var el = document.createElement('html');
+					el.innerHTML = response.query.pages[x].extract;
+					for (var i = 0; i < el.outerHTML.length; i++) {
+						if(el.outerHTML[i]== '<') {
+							if (el.outerHTML[i+1] == '/') {
+								if (el.outerHTML[i+2] == 'p') {
+									text = el.outerHTML;
+									j = i+3;
+									text = text.slice(25, j);
+									break;
+								}
+							}
+						}
+					}
+					band.text = text; 
+
+
+*/

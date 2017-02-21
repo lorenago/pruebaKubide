@@ -48,11 +48,12 @@ body {
       body #container #mainContain #vid {
         visibility: hidden;
         position: absolute;
-        width: 100%;
-        height: 100%;
+        width: 85.35%;
+        height: 82.7%;
         background-color: rgba(0, 0, 0, 0.4);
         display: flex; }
-        body #container #mainContain #vid iframe {
+        body #container #mainContain #vid #video, body #container #mainContain #vid #text, body #container #mainContain #vid #image {
+          display: none;
           margin: auto;
           width: 100%;
           height: 100%; }

@@ -9,7 +9,7 @@
 		"description": "1º parrafo wiki",
 		"keywords": "palabras de la descrip anterior",
 		"video": "https://www.youtube.com/embed/RcZn2-bGXqQ",
-		"text": "texto de la banda",
+		"text": "",
 		"image": "./data/img/rolling-stones.jpg"
 	},
 	{
@@ -22,7 +22,7 @@
 		"description": "1º parrafo wiki",
 		"keywords": "palabras de la descrip anterior",
 		"video": "https://www.youtube.com/embed/A_MjCqQoLLA",
-		"text": "texto de la banda",
+		"text": "",
 		"image": "./data/img/beatles.jpg"
 	},
 
@@ -36,7 +36,7 @@
 		"description": "1º parrafo wiki",
 		"keywords": "palabras de la descrip anterior",
 		"video": "https://www.youtube.com/embed/f4Mc-NYPHaQ",
-		"text": "texto de la banda",
+		"text": "",
 		"image": "./data/img/queen.jpg"
 	}
 ]
