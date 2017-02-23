@@ -1,14 +1,14 @@
 <div class="bandViewer">
 	<div>Foto o lo que sea</div>
 	<div class="bandContent">
-		<div class="bandInfo" ng-click="view(band, text)">{{band.text}}</div>
-		<div class="" ng-click="view(band, video)">Ver vídeo de la banda</div>
-		<img ng-src="{{band.image}}" ng-click="view(band, image)"/>
+		<div class="bandInfo" ng-click="toView('text')">{{band.text}}</div>
+		<div class="" ng-click="toView('video')">Ver vídeo de la banda</div>
+		<img ng-src="{{band.image}}" ng-click="toView('image')"/>
 		
 	</div>
 </div>
-<div id="vid">
-	<iframe id="video" ng-if="video" width="auto" height="auto" ng-src="{{band.video | trusted}}" frameborder="0" allowfullscreen preload="auto"></iframe>
-	<div id="text" ng-if="text"><p>{{band.text}}</p></div>
-	<img id="image" ng-if="image" ng-src="{{band.image}}" />
+<div id="vid" ng-if="view != ''"><p ng-click="close()"> Cerrar ventana <span>X</span></P>
+	<iframe id="video" ng-if="view == 'video'" width="auto" height="auto" ng-src="{{band.video | trusted}}" frameborder="0" allowfullscreen preload="auto"></iframe>
+	<div id="text" ng-if="view == 'text'"><p>{{band.text}}</p></div>
+	<img id="image" ng-if="view == 'image'" ng-src="{{band.image}}" />
 </div>

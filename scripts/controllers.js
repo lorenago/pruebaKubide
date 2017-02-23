@@ -34,6 +34,7 @@ function bandController($scope, $route, $routeParams, $http){
 		$scope.band = findBand(band, $scope.band_Id);
 		infoBand($scope.band);
 	});
+	$scope.view = "";
 
 	function infoBand(band) {
 		if(band.text==""){
@@ -78,23 +79,27 @@ function bandController($scope, $route, $routeParams, $http){
 			document.getElementById("spinner").style.visibility = "hidden";
 		}
 	}
-	$scope.view = function(band, element) {
-		document.getElementById("vid").style.visibility = "visible";
-			$scope.video = false;
-			$scope.image = false;
-			$scope.text = false;
+	$scope.toView = function(element) {
+		//document.getElementById("vid").style.visibility = "visible";
+		$scope.view = "";
 		switch (element){
 			case "video":
-				$scope.video = !$scope.video;
+				$scope.view = "video";
+				break;
 			//	document.getElementById("video").style.display = "flex";
 			case "image":
-				$scope.image = !$scope.image;
+				$scope.view = "image";
+				break;
 				//document.getElementById("image").style.display = "flex";
 			case "text":
-				$scope.text = !$scope.text;
+				$scope.view = "text";
+				break;
 			//	document.getElementById("text").style.display = "flex";
 		}
 		//document.getElementById(element).style.visibility = "visible";
+	}
+	$scope.close = function(){
+		$scope.view = "";
 	}
 };
 
