@@ -34,17 +34,26 @@ body {
           border-top: none; }
     body #container #mainContain {
       flex: 1;
-      display: flex;
       background-color: #eee; }
-      body #container #mainContain * {
-        display: flex;
-        flex: 1; }
       body #container #mainContain .bandViewer {
+        display: flex;
+        flex: 1;
         flex-direction: column; }
         body #container #mainContain .bandViewer .bandContent {
-          flex-direction: row; }
-          body #container #mainContain .bandViewer .bandContent img {
-            max-width: 50%; }
+          display: flex;
+          flex: 1; }
+          body #container #mainContain .bandViewer .bandContent .button {
+            flex: 1; }
+            body #container #mainContain .bandViewer .bandContent .button p {
+              background-color: #960000;
+              padding: 30px;
+              margin: 1px;
+              bottom: 0;
+              color: white;
+              text-align: center;
+              cursor: pointer; }
+            body #container #mainContain .bandViewer .bandContent .button p:hover {
+              background-color: #6e0000; }
       body #container #mainContain #vid {
         position: fixed;
         display: flex;
@@ -53,21 +62,51 @@ body {
         bottom: 0;
         right: 0;
         left: 0;
-        background-color: rgba(0, 0, 0, 0.4); }
+        background-color: rgba(0, 0, 0, 0.5); }
         body #container #mainContain #vid p {
           max-height: 3%;
-          background-color: white;
-          margin: 0;
+          color: white;
           cursor: pointer;
-          text-align: right; }
-        body #container #mainContain #vid #text, body #container #mainContain #vid #image {
+          text-align: right;
+          margin: 10px; }
+          body #container #mainContain #vid p span {
+            margin-right: 15px; }
+        body #container #mainContain #vid #description, body #container #mainContain #vid #image {
           margin: auto; }
+        body #container #mainContain #vid #description p, body #container #mainContain #vid #disco {
+          width: 50%;
+          margin: auto;
+          background-color: #3c3c3c;
+          color: white;
+          padding: 15px;
+          text-align: justify; }
+        body #container #mainContain #vid iframe {
+          display: flex;
+          flex: 1; }
   body footer {
     text-align: center;
     font-size: 0.8em;
     padding: 15px;
     background-color: black;
     color: white; }
+
+#disco {
+  display: block;
+  overflow-x: auto; }
+  #disco .bioMain {
+    flex-direction: column;
+    background-color: white; }
+    #disco .bioMain li {
+      padding: 3px;
+      margin-bottom: 5px;
+      list-style: none; }
+
+.image {
+  flex: 1;
+  margin: auto; }
+  .image * {
+    height: calc(100% - 400px);
+    max-height: 450px; }
 
 #spinner {
   visibility: hidden;

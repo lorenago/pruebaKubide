@@ -20,6 +20,9 @@ function setConfig($locationProvider, $routeProvider){
 };
 
 
+
+
+
 (function () {
 	var app = angular.module('myApp', ['ngRoute', 'myApp.controllers', 'myApp.directives']);
 	app.config(['$locationProvider', '$routeProvider', setConfig]);

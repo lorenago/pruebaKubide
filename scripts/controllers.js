@@ -15,6 +15,52 @@ function homeController($scope, $route, $http){
 	$http.get(SLIDES).then(function(res){
 		$scope.slide = res.data;
 	});
+	$http.get(BANDS).then(function(id){
+		$scope.bands = id.data;
+		getBandSelected($scope.bands, $scope, $route, $http);
+	});
+}
+
+function getBandSelected(bands, $scope, $route, $http){
+	for (var i = 0; i < bands.length; i++) {
+		$.ajax({
+			type: "GET",
+			url: "https://es.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&titles=" + bands[i].wiki,
+			success: function(response){
+				result = response.query.pages;
+				var pages = response.query;
+				var description;
+				for (var i in result) {
+					pageid = i;
+				}
+				var x = pageid;		
+				var description = response.query.pages[x].extract;
+				for (var i = 0; i < description.length; i++) {
+					if(description[i]== '<') {
+						if (description[i+1] == '/') {
+							if (description[i+2] == 'p') {
+								j = i+3;
+								description = description.slice(0, j);
+								break;
+							}
+						}
+					}
+				}
+				var el = document.createElement('html');
+				el.innerHTML = description;
+				for (var i = 0; i < bands.length; i++) {
+					if(bands[i].name == response.query.pages[x].title){
+						bands[i].description = el.innerText;
+					}
+				}
+				localStorage.bands = JSON.stringify(bands);
+
+			},
+			error: function(error){
+				console.error('No se han encontrado resultados.', error);
+			}
+		});
+	}
 }
 
 function menuController($scope, $route, $http){
@@ -29,110 +75,35 @@ function bandController($scope, $route, $routeParams, $http){
 	var bandSelected = "";
 	$scope.$route = $route;
 	$scope.band_Id = $routeParams.id;
-	$http.get(BANDS).then(function(id){
-		var band = id.data;
-		$scope.band = findBand(band, $scope.band_Id);
-		infoBand($scope.band);
-	});
+	var band = JSON.parse(localStorage.bands);
+	$scope.band = findBand(band, $scope.band_Id);
+	document.getElementById("spinner").style.visibility = "hidden";
 	$scope.view = "";
 
-	function infoBand(band) {
-		if(band.text==""){
-			document.getElementById("spinner").style.visibility = "visible";
-			band.wiki;		
-			$.ajax({
-				type: "GET",
-				url: "https://es.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&titles=" + band.wiki,
-				
-				success: function(response){
-					result = response.query.pages;
-					var pages = response.query;
-					var text;
-					for (var i in result) {
-						pageid = i;
-					}
-					var x = pageid;		
-					var text = response.query.pages[x].extract;
-					for (var i = 0; i < text.length; i++) {
-						if(text[i]== '<') {
-							if (text[i+1] == '/') {
-								if (text[i+2] == 'p') {
-									j = i+3;
-									text = text.slice(0, j);
-									break;
-								}
-							}
-						}
-					}
-					var el = document.createElement('html');
-					el.innerHTML = text;
-					band.text = el.innerText; 
-					document.getElementById("spinner").style.visibility = "hidden";
-				},
-				error: function(error){
-					console.error('No se han encontrado resultados.', error);
-				}
-			});
-		}
-		else {
-			$scope.band = band;
-			document.getElementById("spinner").style.visibility = "hidden";
-		}
-	}
 	$scope.toView = function(element) {
-		//document.getElementById("vid").style.visibility = "visible";
 		$scope.view = "";
 		switch (element){
 			case "video":
 				$scope.view = "video";
 				break;
-			//	document.getElementById("video").style.display = "flex";
-			case "image":
-				$scope.view = "image";
+			case "discography":
+				$scope.view = "discography";
 				break;
-				//document.getElementById("image").style.display = "flex";
-			case "text":
-				$scope.view = "text";
+			case "description":
+				$scope.view = "description";
 				break;
-			//	document.getElementById("text").style.display = "flex";
 		}
-		//document.getElementById(element).style.visibility = "visible";
 	}
 	$scope.close = function(){
 		$scope.view = "";
 	}
 };
 
-
 (function() {
 	var ctrl = angular.module('myApp.controllers', []);
-	ctrl.controller('homeController', function (){});
+	ctrl.controller('homeController', homeController);
 	ctrl.controller('fooController', function (){});
 	ctrl.controller('barController', function (){});
 	ctrl.controller('menuController', menuController);
 	ctrl.controller('bandController', bandController);
-	//	ctrl.controller('indexController', indexController);
 })();
-
-
-
-/*
-
-var el = document.createElement('html');
-					el.innerHTML = response.query.pages[x].extract;
-					for (var i = 0; i < el.outerHTML.length; i++) {
-						if(el.outerHTML[i]== '<') {
-							if (el.outerHTML[i+1] == '/') {
-								if (el.outerHTML[i+2] == 'p') {
-									text = el.outerHTML;
-									j = i+3;
-									text = text.slice(25, j);
-									break;
-								}
-							}
-						}
-					}
-					band.text = text; 
-
-
-*/
