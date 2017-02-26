@@ -12,7 +12,7 @@
 <div id="vid" ng-if="view != ''"><p ng-click="close()"><span>X</span></P>
 	<iframe id="video" ng-if="view == 'video'" width="auto" height="auto" ng-src="{{band.video | trusted}}" frameborder="0" allowfullscreen preload="auto">
 	</iframe>
-	<div id="description" ng-if="view == 'description'"><p>{{band.description}}</p></div>
+	<div id="description" ng-if="view == 'description'"><p><span>Biografía:</span><br>{{band.description}}</p></div>
 	<div id="disco" ng-if="view == 'discography'">
 		<ul id="bioMain"> <h3>Discografía: </h3>
 			<li style="list-style: none" ng-repeat="disco in band.disco">{{disco}}</li>
