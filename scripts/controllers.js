@@ -48,13 +48,29 @@ function getBandSelected(bands, $scope, $route, $http){
 				}
 				var el = document.createElement('html');
 				el.innerHTML = description;
+				var keywords = [];
 				for (var i = 0; i < bands.length; i++) {
 					if(bands[i].name == response.query.pages[x].title){
+						var words = el.innerText.split(' ');
+						for (var j = 0; j < 3; j++) {
+							var number = Math.floor(Math.random()*(words.length));
+							wordSelected = words[number];
+							if(wordSelected.length > 3) {
+								var specialChars = "!@#$^&%*()+=-[]\/{}|:<>?,.";
+								for (var k = 0; k < specialChars.length; k++) {
+							       	wordSelected= wordSelected.replace(new RegExp("\\" + specialChars[k], 'gi'), '');
+							   	} 
+								var keywords = keywords + ' ' + wordSelected;
+							} else {
+								j = j-1;
+							}
+						}
+						keywords.slice(1,100);
+						bands[i].keywords = keywords;
 						bands[i].description = el.innerText;
 					}
 				}
 				localStorage.bands = JSON.stringify(bands);
-
 			},
 			error: function(error){
 				console.error('No se han encontrado resultados.', error);
