@@ -10,15 +10,14 @@ var findBand = function (array, id){
   };
 };
 
-function homeController($scope, $route, $http){
+function homeController($scope, $route, $http, $rootScope, MetaService){
 	$scope.$route = $route;
-	$http.get(SLIDES).then(function(res){
-		$scope.slide = res.data;
-	});
 	$http.get(BANDS).then(function(id){
 		$scope.bands = id.data;
 		getBandSelected($scope.bands, $scope, $route, $http);
 	});
+	$rootScope.metaservice = MetaService;
+	$rootScope.metaservice.set("Angular Rocks!", "Esto es la descripción por defecto", "angular rocks default");
 }
 
 function getBandSelected(bands, $scope, $route, $http){
@@ -60,7 +59,11 @@ function getBandSelected(bands, $scope, $route, $http){
 								for (var k = 0; k < specialChars.length; k++) {
 							       	wordSelected= wordSelected.replace(new RegExp("\\" + specialChars[k], 'gi'), '');
 							   	} 
-								var keywords = keywords + ' ' + wordSelected;
+							   	if(j<2){
+									var keywords = keywords + wordSelected + " ";
+								} else {
+									var keywords = keywords + wordSelected;
+								}
 							} else {
 								j = j-1;
 							}
@@ -86,7 +89,7 @@ function menuController($scope, $route, $http){
 	});
 };
 
-function bandController($scope, $route, $routeParams, $http){
+function bandController($scope, $route, $routeParams, $http, $rootScope, MetaService){
 	document.getElementById("spinner").style.visibility = "visible"
 	var bandSelected = "";
 	$scope.$route = $route;
@@ -95,6 +98,8 @@ function bandController($scope, $route, $routeParams, $http){
 	$scope.band = findBand(band, $scope.band_Id);
 	document.getElementById("spinner").style.visibility = "hidden";
 	$scope.view = "";
+	$rootScope.metaservice = MetaService;
+    $rootScope.metaservice.set($scope.band.title, $scope.band.description, $scope.band.keywords);
 
 	$scope.toView = function(element) {
 		$scope.view = "";
@@ -118,8 +123,14 @@ function bandController($scope, $route, $routeParams, $http){
 (function() {
 	var ctrl = angular.module('myApp.controllers', []);
 	ctrl.controller('homeController', homeController);
-	ctrl.controller('fooController', function (){});
-	ctrl.controller('barController', function (){});
+	ctrl.controller('fooController', function ($scope,$rootScope,MetaService){
+      $rootScope.metaservice = MetaService;
+      $rootScope.metaservice.set("Angular Rocks!", "Esto es la descripción por defecto", "angular rocks default");
+   	});
+	ctrl.controller('barController', function ($scope,$rootScope,MetaService){
+      $rootScope.metaservice = MetaService;
+      $rootScope.metaservice.set("Angular Rocks!", "Esto es la descripción por defecto", "angular rocks default");
+   	});
 	ctrl.controller('menuController', menuController);
 	ctrl.controller('bandController', bandController);
 })();

@@ -1,1 +1,11 @@
-<div>Contenido de la página</div>
+<div class="homeBands">
+	<div ng-repeat="band in bands" class="card">
+		<a href="/{{band.path}}">
+			<div class="backImage" style="background-image: url({{band.image}})">
+				<div class="bandName">
+					{{band.name}}
+				</div>
+			</div>
+		</a>
+	</div>
+</div>

@@ -16,9 +16,12 @@ body {
     color: #df1212; }
   body #container {
     display: flex;
-    flex: 1; }
+    flex: 1;
+    overflow-x: auto; }
     body #container #menuLat {
-      width: 200px; }
+      min-width: 200px;
+      width: 200px;
+      max-width: 200px; }
       body #container #menuLat ul {
         margin: 0;
         padding: 0;
@@ -33,6 +36,9 @@ body {
             padding: 15px; }
         body #container #menuLat ul li:first-child {
           border-top: none; }
+        body #container #menuLat ul a:hover > li {
+          background-color: #943434;
+          color: white; }
     body #container #mainContain {
       flex: 1;
       background-color: #eee; }
@@ -90,6 +96,27 @@ body {
     padding: 15px;
     background-color: black;
     color: white; }
+
+.homeBands {
+  background-color: #eee; }
+  .homeBands .card {
+    display: inline-block;
+    height: 250px;
+    width: 50%; }
+    .homeBands .card a {
+      text-decoration: none; }
+    .homeBands .card a:hover > .backImage {
+      opacity: 0.8; }
+    .homeBands .card .backImage {
+      opacity: 0.5;
+      flex-wrap: wrap;
+      width: 100%;
+      height: 100%;
+      background-size: cover; }
+      .homeBands .card .backImage .bandName {
+        opacity: 1;
+        font-size: 1.5em;
+        color: white; }
 
 #disco {
   display: block;

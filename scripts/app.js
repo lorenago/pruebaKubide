@@ -17,11 +17,7 @@ function setConfig($locationProvider, $routeProvider){
     	controller: 'bandController',
     	templateUrl: 'views/band.html',
   	})
-};
-
-
-
-
+};  
 
 (function () {
 	var app = angular.module('myApp', ['ngRoute', 'myApp.controllers', 'myApp.directives']);
@@ -31,4 +27,19 @@ function setConfig($locationProvider, $routeProvider){
       return $sce.trustAsResourceUrl(url);
     };
   }]);
+  app.service('MetaService', function() {
+    var metaTitle = 'Angular Rocks!';
+    var metaDescription = 'Esto es la descripción por defecto';
+    var metaKeywords = 'angular rocks default';
+    return {
+      set: function(newTitle, newMetaDescription, newKeywords) {
+        metaKeywords = newKeywords;
+        metaDescription = newMetaDescription;
+        metaTitle = newTitle; 
+      },
+      metaTitle: function(){ return metaTitle; },
+      metaDescription: function() { return metaDescription; },
+      metaKeywords: function() { return metaKeywords; }
+    }
+  });
 })();
